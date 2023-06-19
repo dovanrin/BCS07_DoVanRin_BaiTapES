@@ -39,7 +39,8 @@
 
                             </ul>
                             <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                    id="inputSearch" oninput="timKiemNguoiDung(event)">
                                 <button class="btn btn-outline-dark" type="submit">Search</button>
                             </form>
                         </div>
@@ -55,8 +56,8 @@
         <!-- Button trigger modal -->
         <div class="d-flex justify-content-around">
             <div class="">
-                <button id="btnThem" type="button" class="btn btn-success mb-3 text-white " data-toggle="modal"
-                    data-target="#exampleModal">
+                <button id="btnThem" type="button" class="btn btn-success mb-3 text-white " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Thêm Người Dùng
                 </button>
             </div>
@@ -67,9 +68,9 @@
                         <select class="custom-select" id="selLoai">
                             <option selected>Chọn loại</option>
                             <option value="all">Tất cả</option>
-                            <option value="loai1">Nhân Viên</option>
-                            <option value="loai1">Sinh Viên</option>
-                            <option value="loai2">Đối Tác</option>
+                            <option value="loai1">Student</option>
+                            <option value="loai2">Employee</option>
+                            <option value="loai3">Custome</option>
                         </select>
                     </div>
                 </div>
@@ -93,17 +94,17 @@
                     </tr>
                 </thead>
                 <tbody id="tbodyDanhSach">
-                    <tr class="">
+                    <!-- <tr class="">
                         <td>Mã</td>
                         <td>Họ Và Tên</td>
                         <td>Email</td>
                         <td>Địa Chỉ</td>
                         <td>Loại Người Dùng</td>
-                        <td><button class="bg-danger">Xóa</button>
+                        <td><button class="bg-danger" onclick="">Xóa</button>
                             <button class="bg-warning">Cập Nhật</button>
                         </td>
 
-                    </tr>
+                    </tr> -->
 
                 </tbody>
             </table>
@@ -118,16 +119,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Thêm Người Dùng</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose">
+                        <!-- <span aria-hidden="true">&times;</span> -->
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="needs-validation" id="foodForm">
+                    <form class="needs-validation" id="FormPerson">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Mã</label>
-                                <input type="text" class="form-control" id="ma" placeholder="Nhập Mã" value="" required>
+                                <input type="text" class="form-control" id="maDoiTuong" placeholder="Nhập Mã" value=""
+                                    required>
                                 <div id="invalidID" class="invalid-feedback">
                                 </div>
                             </div>
@@ -138,18 +140,7 @@
                                 <div id="invalidTen" class="invalid-form">
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="loai">Người Dùng</label>
-                                <select class="custom-select d-block w-100" id="loai" required>
-                                    <option value="">Chọn Người Dùng</option>
-                                    <option value="loai1">Nhân Viên</option>
-                                    <option value="loai2">Sinh Viên</option>
-                                    <option value="loai2">Đối Tác</option>
-                                </select>
-                                <div id="invalidLoai" class="invalid-feedback">
 
-                                </div>
-                            </div>
                             <div class="col-md-6 mb-3">
                                 <label for="Email">Email</label>
                                 <input type="text" class="form-control" id="email" placeholder="Nhập Email" value=""
@@ -157,6 +148,7 @@
                                 <div id="invalidGia" class="invalid-feedback">
                                 </div>
                             </div>
+
                             <div class="col-md-6 mb-3">
                                 <label for="">Địa Chỉ</label>
                                 <input type="text" class="form-control" id="diaChi" placeholder="Nhập Địa Chỉ" value=""
@@ -165,27 +157,81 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Điểm Toán</label>
-                                <input type="text" class="form-control" id="diemToan" placeholder="Nhập Điểm" value=""
-                                    required>
-                                <div id="invalidGia" class="invalid-feedback">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="">Điểm Lý</label>
-                                <input type="text" class="form-control" id="diemLy" placeholder="Nhập Điểm" value=""
-                                    required>
-                                <div id="invalidGia" class="invalid-feedback">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="">Điểm Hóa</label>
-                                <input type="text" class="form-control" id="diemHoa" placeholder="Nhập Điểm" value=""
-                                    required>
-                                <div id="invalidGia" class="invalid-feedback">
-                                </div>
-                            </div>
+                                <label for="loai">Người Dùng</label>
+                                <select class="custom-select d-block w-100" id="loai" required>
+                                    <option value="">Chọn Người Dùng</option>
+                                    <option value="loai1">Student</option>
+                                    <option value="loai2">Employee</option>
+                                    <option value="loai3">Custome</option>
+                                </select>
+                                <div id="invalidLoai" class="invalid-feedback">
 
+                                </div>
+                            </div>
+                            <div class="studen col-12">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="">Điểm Toán</label>
+                                        <input type="text" class="form-control" id="Toan" placeholder="Nhập Điểm"
+                                            value="" required>
+                                        <div id="invalidGia" class="invalid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="">Điểm Lý</label>
+                                        <input type="text" class="form-control" id="Ly" placeholder="Nhập Điểm" value=""
+                                            required>
+                                        <div id="invalidGia" class="invalid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="">Điểm Hóa</label>
+                                        <input type="text" class="form-control" id="Hoa" placeholder="Nhập Điểm"
+                                            value="" required>
+                                        <div id="invalidGia" class="invalid-feedback">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="employee row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Số Ngày Làm</label>
+                                    <input type="text" class="form-control" id="soNgayLam" placeholder="Nhập số Ngày"
+                                        value="" required>
+                                    <div id="invalidGia" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Lương Theo Ngày</label>
+                                    <input type="text" class="form-control" id="luongTheoNgay" placeholder="Nhập Lương"
+                                        value="" required>
+                                    <div id="invalidGia" class="invalid-feedback">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custome row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Tên Công Ty:</label>
+                                    <input type="text" class="form-control" id="tenCongTy" placeholder="Tên Công Ty"
+                                        value="" required>
+                                    <div id="invalidGia" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Trị Giá Hóa Đơn</label>
+                                    <input type="text" class="form-control" id="triGiaHoaDon" placeholder="Trị Giá"
+                                        value="" required>
+                                    <div id="invalidGia" class="invalid-feedback">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Đánh Giá</label>
+                                    <input type="text" class="form-control" id="danhGia" placeholder="Đánh Giá" value=""
+                                        required>
+                                    <div id="invalidGia" class="invalid-feedback">
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -193,9 +239,9 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btnClose" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClose">Close</button>
                     <button type="button" class="btn btn-warning" id="btnCapNhat">Cập Nhật</button>
-                    <button type="button" class="btn btn-warning" id="btnThemMon">Thêm</button>
+                    <button type="button" class="btn btn-warning" id="btnThemNguoiDung">Thêm</button>
                 </div>
             </div>
         </div>
