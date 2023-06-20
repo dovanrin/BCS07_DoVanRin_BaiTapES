@@ -25,15 +25,16 @@ document.getElementById("btnThemNguoiDung").addEventListener("click", () => {
 // ẩn nội dung input cho từng loại
 function anInput() {
   let loaiNguoiDung = document.getElementByIdr("loai").value;
-  if (loaiNguoiDung == loai1) {
-    document.querySelector(".employee").style.display = "none";
-    document.querySelector(".custome").style.display = "none";
-  } else if (loaiNguoiDung == loai2) {
-    document.querySelector(".custome").style.display = "none";
-    document.querySelector(".student").style.display = "none";
-  } else if (loaiNguoiDung == loai3) {
-    document.querySelector(".employee").style.display = "none";
-    document.querySelector(".student").style.display = "none";
+  switch (loaiNguoiDung) {
+    case "loai1":
+      document.querySelector(".employee").style.display = "none";
+      document.querySelector(".custome").style.display = "none";
+    case "loai2":
+      document.querySelector(".custome").style.display = "none";
+      document.querySelector(".student").style.display = "none";
+    case "loai3":
+      document.querySelector(".employee").style.display = "none";
+      document.querySelector(".student").style.display = "none";
   }
 }
 // anInput();
@@ -48,17 +49,23 @@ document.getElementById("btnCapNhat").onclick = () => {
   let arrInput = document.querySelectorAll(
     "#FormPerson input, #FormPerson select, #FormPerson textarea"
   );
-  let employee = new res.default.Employee();
+  let person = new res.default.Person();
   for (let item of arrInput) {
     let { id, value } = item;
-    employee[id] = value;
+    person[id] = value;
   }
-  listperson.capNhatThongTin(employee);
+  listperson.capNhatThongTin(person);
 };
-// document.getElementById("inputSearch").addEventListener("keyup", (event)=>{
-// let value = event.target
-// })
+
 window.timKiemNguoiDung = (event) => {
   let value = event.target.value;
   listperson.timKiemNguoiDung(value);
+};
+window.locNguoiDung = () => {
+  listperson.locNguoiDung();
+  console.log(listperson.locNguoiDung());
+};
+// document.getElementsByTagName;
+window.sapXep = (colNum) => {
+  listperson.sapXep(colNum);
 };

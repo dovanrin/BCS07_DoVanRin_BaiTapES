@@ -65,12 +65,12 @@
                 <div class="form-group row d-flex align-items-center">
                     <label for="selLoai" class="col-sm-4 col-form-label"><b>Lọc:</b></label>
                     <div class="col-sm-8">
-                        <select class="custom-select" id="selLoai">
+                        <select class="custom-select" id="selLoai" onchange="locNguoiDung()">
                             <option selected>Chọn loại</option>
                             <option value="all">Tất cả</option>
-                            <option value="loai1">Student</option>
-                            <option value="loai2">Employee</option>
-                            <option value="loai3">Custome</option>
+                            <option value="Student">Student</option>
+                            <option value="Employee">Employee</option>
+                            <option value="Custome">Custome</option>
                         </select>
                     </div>
                 </div>
@@ -85,7 +85,11 @@
                 <thead>
                     <tr class="bg-primary text-white">
                         <th>Mã</th>
-                        <th>Họ Và Tên</th>
+                        <th onclick="sapXep(1)" class="d-flex justify-content-around align-content-between">
+                            <span>Họ Và Tên</span>
+                            <span class="text-white"><i class="fa-solid fa-sort"></i></span>
+
+                        </th>
                         <th>Email</th>
                         <th>Địa Chỉ</th>
                         <th>Loại Người Dùng</th>
@@ -160,9 +164,9 @@
                                 <label for="loai">Người Dùng</label>
                                 <select class="custom-select d-block w-100" id="loai" required>
                                     <option value="">Chọn Người Dùng</option>
-                                    <option value="loai1">Student</option>
-                                    <option value="loai2">Employee</option>
-                                    <option value="loai3">Custome</option>
+                                    <option value="loai1" onclick="anInput()">Student</option>
+                                    <option value="loai2" onclick="anInput()">Employee</option>
+                                    <option value="loai3" onclick="anInput()">Custome</option>
                                 </select>
                                 <div id="invalidLoai" class="invalid-feedback">
 
