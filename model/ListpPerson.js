@@ -8,13 +8,22 @@ export default class Listperson {
   themNguoiDung(employee) {
     this.arrListPerson.push(employee);
   }
-  renderTable() {
-    let content = this.arrListPerson.map((item, index) => {
-      let person = new res.default.Employee();
-      Object.assign(person, item);
+  renderTable = () => {
+    let content = this.arrListPerson
+      .map((item, index) => {
+        let person = new res.default.Employee();
+        Object.assign(person, item);
 
-      let { maDoiTuong, tenNguoiDung, email, diaChi, loai } = person;
-      return `
+        let {
+          maDoiTuong,
+          tenNguoiDung,
+          email,
+          diaChi,
+          loai,
+          diemTrungBinh,
+          tinhLuong,
+        } = person;
+        return `
       <tr>
         <td>${maDoiTuong}</td>
         <td>${tenNguoiDung}</td>
@@ -23,15 +32,17 @@ export default class Listperson {
         <td>${
           loai == "loai1" ? "Student" : loai == "loai2" ? "Employee" : "Custome"
         }</td>
+    
         <td>
           <button class="bg-danger" onclick="xoaNguoiDung('${maDoiTuong}')">Xóa</button>
           <button class="bg-warning" onclick="layThongTin('${maDoiTuong}')">Cập Nhật</button>
         </td>
       </tr>
       `;
-    });
+      })
+      .join("");
     document.getElementById("tbodyDanhSach").innerHTML = content;
-  }
+  };
   luulocal() {
     localStorage.setItem("arrListPerson", JSON.stringify(this.arrListPerson));
   }
@@ -63,13 +74,14 @@ export default class Listperson {
       }
     }
   }
-  capNhatThongTin(person) {
+  capNhatThongTin(employee) {
     let index = this.arrListPerson.findIndex(
-      (item) => item.maDoiTuong == person.maDoiTuong
+      (item) => item.maDoiTuong == employee.maDoiTuong
     );
+    console.log(index);
     if (index != -1) {
-      this.arrListPerson[index] = person;
-      console.log(person);
+      this.arrListPerson[index] = employee;
+
       this.renderTable();
       this.luulocal();
       document.getElementById("btnClose").click();
@@ -83,6 +95,8 @@ export default class Listperson {
       console.log(ten);
       return ten.toLowerCase().trim().includes(newKeyWord.toLowerCase().trim());
     });
+    console.log(arrTimKiem);
+    this.renderTable();
   }
   locNguoiDung() {
     let loai = document.getElementById("selLoai").value,
@@ -136,15 +150,15 @@ export default class Listperson {
           }
         }
       }
-    }
-    if (shouldwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount++;
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
+      if (shouldwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
+        switchcount++;
+      } else {
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
       }
     }
   }

@@ -13,9 +13,9 @@ class Student extends Person {
     this.ly = "";
     this.hoa = "";
   }
-  diemTrungBinh() {
-    return (this.toan * 1 + this.ly * 1 + this.hoa * 1) / 3;
-  }
+  diemTrungBinh = () => {
+    return (this.toan + this.ly + this.hoa) / 3;
+  };
 }
 class Employee extends Person {
   constructor() {
@@ -23,6 +23,9 @@ class Employee extends Person {
     this.soNgayLam = "";
     this.luongTheoNgay = "";
   }
+  tinhLuong = () => {
+    return this.soNgayLam * this.luongNgay;
+  };
 }
 class Customer extends Person {
   constructor() {

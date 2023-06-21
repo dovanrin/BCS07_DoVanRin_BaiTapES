@@ -49,12 +49,12 @@ document.getElementById("btnCapNhat").onclick = () => {
   let arrInput = document.querySelectorAll(
     "#FormPerson input, #FormPerson select, #FormPerson textarea"
   );
-  let person = new res.default.Person();
+  let employee = new res.default.Employee();
   for (let item of arrInput) {
     let { id, value } = item;
-    person[id] = value;
+    employee[id] = value;
   }
-  listperson.capNhatThongTin(person);
+  listperson.capNhatThongTin(employee);
 };
 
 window.timKiemNguoiDung = (event) => {

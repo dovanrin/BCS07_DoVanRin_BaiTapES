@@ -6,6 +6,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -66,7 +71,7 @@
                     <label for="selLoai" class="col-sm-4 col-form-label"><b>Lọc:</b></label>
                     <div class="col-sm-8">
                         <select class="custom-select" id="selLoai" onchange="locNguoiDung()">
-                            <option selected>Chọn loại</option>
+
                             <option value="all">Tất cả</option>
                             <option value="Student">Student</option>
                             <option value="Employee">Employee</option>
@@ -85,7 +90,7 @@
                 <thead>
                     <tr class="bg-primary text-white">
                         <th>Mã</th>
-                        <th onclick="sapXep(1)" class="d-flex justify-content-around align-content-between">
+                        <th onclick="sapXep(0)" class="d-flex justify-content-around align-content-between">
                             <span>Họ Và Tên</span>
                             <span class="text-white"><i class="fa-solid fa-sort"></i></span>
 
@@ -93,6 +98,7 @@
                         <th>Email</th>
                         <th>Địa Chỉ</th>
                         <th>Loại Người Dùng</th>
+                        <!-- <th>Thông Tin Riêng</th> -->
 
                         <th>Tùy Chọn</th>
                     </tr>
@@ -164,9 +170,9 @@
                                 <label for="loai">Người Dùng</label>
                                 <select class="custom-select d-block w-100" id="loai" required>
                                     <option value="">Chọn Người Dùng</option>
-                                    <option value="loai1" onclick="anInput()">Student</option>
-                                    <option value="loai2" onclick="anInput()">Employee</option>
-                                    <option value="loai3" onclick="anInput()">Custome</option>
+                                    <option value="loai1" onchange="anInput()">Student</option>
+                                    <option value="loai2" onchange="anInput()">Employee</option>
+                                    <option value="loai3" onchange="anInput()">Custome</option>
                                 </select>
                                 <div id="invalidLoai" class="invalid-feedback">
 
